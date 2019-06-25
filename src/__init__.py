@@ -1,0 +1,1 @@
+global sample_reviews
