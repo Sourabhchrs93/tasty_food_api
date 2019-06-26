@@ -7,11 +7,12 @@ class Sample:
         self.filename = filename
 
     def random_sampler(self, k):
+        self.sample_list = []
         with open(self.filename, 'rb') as f:
             f.seek(0, 2)
             filesize = f.tell()
             random_set = sorted(random.sample(range(filesize), k))
-
+            count = 0
             for i in range(k):
                 f.seek(random_set[i])
                 # Skip current line (because we might be in the middle of a line.
@@ -21,6 +22,7 @@ class Sample:
                 while 'product/productId:' not in new_line:
                     new_line = str(f.readline())
                 doc = dict()
+                doc['_id'] = count
                 doc['product/productId'] = new_line.split("product/productId: ", 1)[-1][:-3]
                 doc['review/userId'] = str(f.readline()).split("review/userId: ", 1)[-1][:-3]
                 doc['review/profileName'] = str(f.readline()).split("review/profileName: ", 1)[-1][:-3]
@@ -31,6 +33,7 @@ class Sample:
                 doc['review/text'] = str(f.readline()).split("review/text: ", 1)[-1][:-3]
 
                 self.sample_list.append(doc)
+                count += 1
 
         return len(self.sample_list)
 
