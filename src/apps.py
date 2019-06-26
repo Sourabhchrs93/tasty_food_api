@@ -4,6 +4,8 @@ from flask_restful_swagger import swagger
 
 from src.resources.read_random_reviews import CreateSampleReviews
 from src.resources.read_random_reviews import GetSampleSize
+from src.resources.fetchtopreviews import FetchTopReviews
+
 
 app = Flask(__name__)
 api = swagger.docs(
@@ -11,8 +13,10 @@ api = swagger.docs(
     basePath="http://localhost:5000/api/v0/",
     description="docs for data explorer api")
 
+sample_reviews = []
 api.add_resource(CreateSampleReviews, '/api/samplereviews')
 api.add_resource(GetSampleSize, '/api/size')
+api.add_resource(FetchTopReviews, '/api/fetch')
 
 
 @app.route("/")
