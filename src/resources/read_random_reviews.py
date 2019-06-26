@@ -1,5 +1,5 @@
 from flask_restful import Resource
-import services.random_sample as rs
+from services.random_sample import sample
 
 
 class CreateSampleReviews(Resource):
@@ -7,9 +7,8 @@ class CreateSampleReviews(Resource):
         self.input_file = 'finefoods.txt'
 
     def get(self):
-        global sample_reviews
-        sample_reviews = rs.random_sampler(self.input_file, 100000)
-        return len(sample_reviews)
+        reviews_count = sample.random_sampler(100000)
+        return reviews_count
 
 
 class GetSampleSize(Resource):
@@ -17,9 +16,8 @@ class GetSampleSize(Resource):
         pass
 
     def get(self):
-        global sample_reviews
-        try:
-            len(sample_reviews)
-        except Exception as e:
+        sample_list = sample.get_sample()
+        if len(sample_list) == 0:
             return 'generate samples first', 400
-        return sample_reviews
+        return sample_list
+
