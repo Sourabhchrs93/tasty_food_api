@@ -29,7 +29,9 @@ class FetchTopReviews(Resource):
             score = 0
             while review_index < length:
                 # search in list of special chars. we might get something like 'good.'
-                if review['review/text'][review_index] != ' ':
+                if review['review/text'][review_index] not in ['`','~','!','@','#','$','%','^','&','*','(',')','_','-',
+                                                               '+','=','{','[','}','}','|','\\',':',';','"',"'",'<',','
+                                                               ,'>','.','?','/', ' ']:
                     word += review['review/text'][review_index]
                 else:
                     word = word.lower()
