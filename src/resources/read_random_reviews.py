@@ -10,7 +10,8 @@ class CreateSampleReviews(Resource):
     def get(self):
         limit = int(request.args.get("limit", 20))
         reviews_count = sample.create_sample_from_txt(limit)
-        return reviews_count
+        if reviews_count:
+            return {"messsage": "{} samples generated successfully".format(list)}, 200
 
 
 class GetTestSample(Resource):
@@ -22,7 +23,8 @@ class GetTestSample(Resource):
         if len(sample_list) == 0:
             return 'generate samples first', 400
 
-        out = []
+        out = dict()
+        data = []
         for samples in sample_list[:20]:
             out_doc = dict()
             out_doc['_id'] = samples['_id']
@@ -34,6 +36,9 @@ class GetTestSample(Resource):
             out_doc['review/time'] = samples['review/time']
             out_doc['review/summary'] = samples['review/summary']
             out_doc['review/text'] = samples['review/text']
-            out.append(out_doc)
+            data.append(out_doc)
+
+            out['data'] = data
+            out['count'] = len(data)
         return out
 
