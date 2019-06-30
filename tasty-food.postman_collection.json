@@ -1,0 +1,133 @@
+{
+	"info": {
+		"_postman_id": "e7bf0be5-4645-431f-b4c6-4710106d576c",
+		"name": "tasty-food",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "create sample from txt file",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://0.0.0.0:8000/api/create/samplereviews?limit=100000",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"create",
+						"samplereviews"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "100000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create samples from pickle file",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://0.0.0.0:8000/api/pickle/fetchsample",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"pickle",
+						"fetchsample"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "test created sample- fetch top 20 reviews",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://0.0.0.0:8000/api/test/fetchsample",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"test",
+						"fetchsample"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "search engine to search gourmet food reviews data and return the top",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"data\": [\"live\", \"good\", \"possible\", \"perspective\"]\n}"
+				},
+				"url": {
+					"raw": "http://0.0.0.0:8000/api/query",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"query"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
