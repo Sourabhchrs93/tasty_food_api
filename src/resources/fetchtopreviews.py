@@ -23,6 +23,7 @@ class FetchTopReviews(Resource):
         for index, review in enumerate(sample_reviews):
             review_set = review['review/text1']
             review_score = float(review['review/score'])
+
             diff_set = queries_set - review_set
             score = query_length - len(diff_set)
 
