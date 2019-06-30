@@ -1,6 +1,3 @@
-import random
-
-
 class Sample:
     def __init__(self, filename):
         self.sample_list = []
@@ -25,7 +22,7 @@ class Sample:
                 doc['review/summary'] = str(f.readline()).split("review/summary: ", 1)[-1][:-3]
                 doc['review/text'] = str(f.readline()).split("review/text: ", 1)[-1][:-3]
                 doc['review/text1'] = set()
-                review = doc['review/summary'] + " "+ doc['review/text']
+                review = doc['review/summary'] + " " + doc['review/text']
 
                 review_length = len(review)
                 review_index = 0
