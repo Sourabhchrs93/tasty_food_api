@@ -1,11 +1,12 @@
 import _pickle as pkl
 
+
 class Sample:
     def __init__(self, filename):
         self.sample_list = []
         self.filename = filename
 
-    def random_sampler(self, k):
+    def create_sample_from_txt(self, k):
         self.sample_list = []
         count = 0
         with open(self.filename, 'rb') as f:
@@ -44,14 +45,19 @@ class Sample:
                 self.sample_list.append(doc)
                 count += 1
 
-        # filehandler = open('sample_review.p', 'wb')
-        # pkl.dump(self.sample_list, filehandler)
-        # filehandler.close()
+        filehandler = open('sample_review.p', 'wb')
+        pkl.dump(self.sample_list, filehandler)
+        filehandler.close()
 
         return len(self.sample_list)
 
     def get_sample(self):
         return self.sample_list
+
+    def load_sample_pickle_file(self):
+        file = open("sample_review.p", 'rb')
+        self.sample_list = pkl.load(file)
+        return {"message": "sample loaded"}
 
 
 sample = Sample('finefoods.txt')

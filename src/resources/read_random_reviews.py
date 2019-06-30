@@ -9,11 +9,11 @@ class CreateSampleReviews(Resource):
 
     def get(self):
         limit = int(request.args.get("limit", 20))
-        reviews_count = sample.random_sampler(limit)
+        reviews_count = sample.create_sample_from_txt(limit)
         return reviews_count
 
 
-class GetSampleSize(Resource):
+class GetTestSample(Resource):
     def __init__(self):
         pass
 
