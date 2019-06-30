@@ -1,0 +1,7 @@
+.idea/
+env/
+src/Unconfirmed 682533.crdownload
+src/__pycache__/
+src/resources/__pycache__/
+src/resources/get_sample_from_pickle.py
+src/services/__pycache__/
