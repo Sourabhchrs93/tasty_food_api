@@ -1,12 +1,15 @@
 from flask_restful import Resource
 from flask import request
 from services.random_sample import sample
+# import _pickle as pkl
 
 import json
 
 
 class FetchTopReviews(Resource):
     def __init__(self):
+        # self.file = open("sample_review.p", 'rb')
+        # self.reviews = pkl.load(self.file)
         pass
 
     def post(self):
@@ -16,13 +19,14 @@ class FetchTopReviews(Resource):
 
         k = int(request.args.get("k", 20))
         sample_reviews = sample.get_sample()
+        # sample_reviews = self.reviews
         top_k = []
         queries_set = set()
         for word in queries:
             queries_set.add(word.lower())
         for index, review in enumerate(sample_reviews):
             review_set = review['review/text1']
-            review_score = float(review['review/score'])
+            review_score = review['review/score']
 
             diff_set = queries_set - review_set
             score = query_length - len(diff_set)

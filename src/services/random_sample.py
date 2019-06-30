@@ -1,3 +1,5 @@
+import _pickle as pkl
+
 class Sample:
     def __init__(self, filename):
         self.sample_list = []
@@ -17,7 +19,7 @@ class Sample:
                 doc['review/userId'] = str(f.readline()).split("review/userId: ", 1)[-1][:-3]
                 doc['review/profileName'] = str(f.readline()).split("review/profileName: ", 1)[-1][:-3]
                 doc['review/helpfulness'] = str(f.readline()).split("review/helpfulness: ", 1)[-1][:-3]
-                doc['review/score'] = str(f.readline()).split("review/score: ", 1)[-1][:-3]
+                doc['review/score'] = float(str(f.readline()).split("review/score: ", 1)[-1][:-3])
                 doc['review/time'] = str(f.readline()).split("review/time: ", 1)[-1][:-3]
                 doc['review/summary'] = str(f.readline()).split("review/summary: ", 1)[-1][:-3]
                 doc['review/text'] = str(f.readline()).split("review/text: ", 1)[-1][:-3]
@@ -41,6 +43,11 @@ class Sample:
 
                 self.sample_list.append(doc)
                 count += 1
+
+        # filehandler = open('sample_review.p', 'wb')
+        # pkl.dump(self.sample_list, filehandler)
+        # filehandler.close()
+
         return len(self.sample_list)
 
     def get_sample(self):
