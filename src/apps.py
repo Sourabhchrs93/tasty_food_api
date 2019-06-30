@@ -14,9 +14,9 @@ api = swagger.docs(
     description="docs for data explorer api")
 
 sample_reviews = []
-api.add_resource(CreateSampleReviews, '/api/samplereviews')
-api.add_resource(GetSampleSize, '/api/size')
-api.add_resource(FetchTopReviews, '/api/fetch')
+api.add_resource(CreateSampleReviews, '/api/create/samplereviews')
+api.add_resource(GetSampleSize, '/api/fetchsample')
+api.add_resource(FetchTopReviews, '/api/query')
 
 
 @app.route("/")
