@@ -28,7 +28,18 @@ $ cd src
 $ python apps.py
 ```
 
-Navigate to `[http://localhost:8000]`
+Navigate to 
+```
+[http://localhost:8000] - Will display hello world
+```
+
+One time operation:
+```
+http://localhost:8000/api/create/samplereviews' -  run to load samples and create pickle file
+http://localhost:8000/api/pickle/fetchsample' - run to load samples from pickle file 
+http://localhost:8000/api/test/fetchsample' -  will return top 20 reviews
+http://localhost:8000/api/query' - return review based on query words and review score
+```
 
 Comments:
 ```

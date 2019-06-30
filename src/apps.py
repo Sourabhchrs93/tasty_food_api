@@ -14,7 +14,6 @@ api = swagger.docs(
     basePath="http://localhost:5000/api/v0/",
     description="docs for data explorer api")
 
-sample_reviews = []
 api.add_resource(CreateSampleReviews, '/api/create/samplereviews')
 api.add_resource(GetTestSample, '/api/test/fetchsample')
 api.add_resource(GetSampleFromPickle, '/api/pickle/fetchsample')
