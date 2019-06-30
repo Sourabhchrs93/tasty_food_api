@@ -34,7 +34,8 @@ class FetchTopReviews(Resource):
             top_k = self.insert_ele(top_k, k, (index, score/query_length, review_score))
 
         print(top_k)
-        output = []
+        output = dict()
+        data = []
         for ki in top_k:
             out_doc = dict()
             out_doc['_id'] = sample_reviews[ki[0]]['_id']
@@ -47,7 +48,9 @@ class FetchTopReviews(Resource):
             out_doc['review/summary'] = sample_reviews[ki[0]]['review/summary']
             out_doc['review/text'] = sample_reviews[ki[0]]['review/text']
 
-            output.append(out_doc)
+            data.append(out_doc)
+            output['data'] = data
+            output['count'] = len(data)
 
         return output
 
