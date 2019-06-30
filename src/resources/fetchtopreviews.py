@@ -52,7 +52,6 @@ class FetchTopReviews(Resource):
 
         return output
 
-
     def insert_ele(self, sorted_listed, k, n):
         # Searching for the position
         i = 0
