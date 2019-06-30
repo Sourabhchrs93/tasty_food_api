@@ -22,11 +22,11 @@ class FetchTopReviews(Resource):
             queries_set.add(word.lower())
         for index, review in enumerate(sample_reviews):
             review_set = review['review/text1']
-
+            review_score = float(review['review/score'])
             diff_set = queries_set - review_set
             score = query_length - len(diff_set)
 
-            top_k = self.insert_ele(top_k, k, (index, score/query_length))
+            top_k = self.insert_ele(top_k, k, (index, score/query_length, review_score))
 
         print(top_k)
         output = []
@@ -50,7 +50,12 @@ class FetchTopReviews(Resource):
         # Searching for the position
         i = 0
         while i < len(sorted_listed):
-            if sorted_listed[i][1] < n[1]:
+            if sorted_listed[i][1] <= n[1]:
+                break
+            i += 1
+
+        while i < len(sorted_listed) and sorted_listed[i][1] == n[1]:
+            if sorted_listed[i][2] <= n[2]:
                 break
             i += 1
 
