@@ -1,5 +1,5 @@
 # Flask setup http://flask.pocoo.org/
-Flask==0.12.2
+Flask==1.0
 
 # https://flask-restful.readthedocs.io/en/latest/
 Flask-RESTful==0.3.6
